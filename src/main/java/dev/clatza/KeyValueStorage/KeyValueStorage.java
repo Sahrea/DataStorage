@@ -31,8 +31,7 @@ public class KeyValueStorage extends JavaPlugin implements Listener {
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args)
     {
         if (cmd.getName().equalsIgnoreCase("keyvalue")) {
-            if (sender instanceof BlockCommandSender)
-            {
+            if (sender instanceof BlockCommandSender) {
                 BlockCommandSender commandblock = (BlockCommandSender)sender;
 
                 if(args.length < 2)
