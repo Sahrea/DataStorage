@@ -15,7 +15,7 @@ public class MySQL implements iDatabase {
             this.createConecction();
 
             Statement _statement = this.Connection.createStatement();
-            _statement.executeUpdate("CREATE TABLE IF NOT EXISTS `KeyValue` (`indexValue` VARCHAR(64) NOT NULL COLLATE 'utf8_unicode_ci', `dataValue` TEXT NOT NULL COLLATE 'utf8_unicode_ci', PRIMARY KEY (`indexValue`) USING BTREE) COLLATE='utf8_unicode_ci' ENGINE=InnoDB;");
+            _statement.executeUpdate("CREATE TABLE IF NOT EXISTS `KeyValue` (`indexValue` VARCHAR(64) NOT NULL COLLATE 'utf8_unicode_ci', `dataValue` TEXT NOT NULL COLLATE 'utf8_unicode_ci', PRIMARY KEY (`indexValue`) USING HASH) COLLATE='utf8_unicode_ci' ENGINE=InnoDB;");
             _statement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
