@@ -16,7 +16,7 @@ public class SQLite implements iDatabase {
 
             Statement _statement = this.Connection.createStatement();
 
-            _statement.executeUpdate("CREATE TABLE IF NOT EXISTS KeyValue(indexValue varchar(64) PRIMARY KEY, dataValue TEXT)");
+            _statement.executeUpdate("CREATE TABLE IF NOT EXISTS KeyValue(indexValue varchar(256) PRIMARY KEY, dataValue TEXT)");
             _statement.close();
         } catch (SQLException throwables) {
             throwables.printStackTrace();
