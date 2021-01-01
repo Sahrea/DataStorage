@@ -1,57 +1,47 @@
-package dev.clatza.KeyValueStorage;
+package dev.clatza.storage;
 
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.Plugin;
 
-public class ConfigReader {
-    private Plugin Plugin;
-    public ConfigReader(Plugin plugin)
-    {
-        this.Plugin = plugin;
+public class DataStorageConfigReader {
+    private String DBType = "SQLite";
+    private String DBUsername = "root";
+    private String DBPassword = "";
+    private String DBDatabase = "DataStorage";
+    private String DBHost = "127.0.0.1";
+    private int DBPort = 3306;
 
-        setDefaultConfigValues(this.Plugin.getConfig());
-        getConfigValues(this.Plugin.getConfig());
-        saveConfigValues(this.Plugin.getConfig());
+    protected DataStorageConfigReader(Plugin plugin) {
+        setDefaultConfigValues(plugin.getConfig());
+        getConfigValues(plugin.getConfig());
+        saveConfigValues(plugin, plugin.getConfig());
     }
 
-    private String DBType = "SQLite";
-    public String getDBType()
-    {
+    protected String getDBType() {
         return this.DBType;
     }
 
-    private String DBUsername = "root";
-    public String getDBUsername()
-    {
+    protected String getDBUsername() {
         return this.DBUsername;
     }
 
-    private String DBPassword = "";
-    public String getDBPassword()
-    {
+    protected String getDBPassword() {
         return this.DBPassword;
     }
 
-    private String DBDatabase = "KeyValueStorage";
-    public String getDBDatabase()
-    {
+    protected String getDBDatabase() {
         return this.DBDatabase;
     }
 
-    private String DBHost = "127.0.0.1";
-    public String getDBHost()
-    {
+    protected String getDBHost() {
         return this.DBHost;
     }
 
-    private int DBPort = 3306;
-    public int getDBPort()
-    {
+    protected int getDBPort() {
         return this.DBPort;
     }
 
-    private void setDefaultConfigValues(FileConfiguration _config)
-    {
+    private void setDefaultConfigValues(FileConfiguration _config) {
         _config.addDefault("DB.Type", this.DBType);
 
         _config.addDefault("MySQL.Host", this.DBHost);
@@ -61,8 +51,7 @@ public class ConfigReader {
         _config.addDefault("MySQL.Password", this.DBPassword);
     }
 
-    private void getConfigValues(FileConfiguration _config)
-    {
+    private void getConfigValues(FileConfiguration _config) {
         this.DBType = _config.getString("DB.Type");
 
         this.DBHost = _config.getString("MySQL.Host");
@@ -72,8 +61,7 @@ public class ConfigReader {
         this.DBPassword = _config.getString("MySQL.Password");
     }
 
-    private void saveConfigValues(FileConfiguration _config)
-    {
+    private void saveConfigValues(Plugin plugin, FileConfiguration _config) {
         _config.set("DB.Type", this.DBType);
 
         _config.set("MySQL.Host", this.DBHost);
@@ -82,6 +70,6 @@ public class ConfigReader {
         _config.set("MySQL.User", this.DBUsername);
         _config.set("MySQL.Password", this.DBPassword);
 
-        this.Plugin.saveConfig();
+        plugin.saveConfig();
     }
 }

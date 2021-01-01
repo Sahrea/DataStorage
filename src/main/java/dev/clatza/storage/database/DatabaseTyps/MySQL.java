@@ -1,16 +1,25 @@
-package dev.clatza.KeyValueStorage.Database.DatabaseTyps;
+package dev.clatza.storage.database.DatabaseTyps;
 
-import dev.clatza.KeyValueStorage.Database.iDatabase;
-import dev.clatza.KeyValueStorage.GlobalDataStorage;
+import dev.clatza.storage.database.iDatabase;
 
 import java.sql.*;
 
 public class MySQL implements iDatabase {
 
     Connection Connection = null;
+    private String host = null;
+    private String user = null;
+    private String password = null;
+    private String database = null;
+    private Integer port = 0;
 
-    public MySQL()
-    {
+    public MySQL(String host, int port, String user, String password, String db) {
+        this.host = host;
+        this.user = user;
+        this.password = password;
+        this.database = db;
+        this.port = port;
+
         try {
             this.createConecction();
 
@@ -23,19 +32,17 @@ public class MySQL implements iDatabase {
     }
 
     private void createConecction() throws SQLException {
-        this.Connection = DriverManager.getConnection("jdbc:mysql://" + GlobalDataStorage.ConfigReader.getDBHost() + ":" + GlobalDataStorage.ConfigReader.getDBPort() + "/" + GlobalDataStorage.ConfigReader.getDBDatabase(), GlobalDataStorage.ConfigReader.getDBUsername(), GlobalDataStorage.ConfigReader.getDBPassword());
+        this.Connection = DriverManager.getConnection("jdbc:mysql://" + this.host + ":" + this.port + "/" + this.database, this.user, this.password);
     }
 
     private void checkConecction() throws SQLException {
-        if(this.Connection.isClosed() || !this.Connection.isValid(3))
-        {
+        if (this.Connection.isClosed() || !this.Connection.isValid(3)) {
             this.Connection.close();
             createConecction();
         }
     }
 
-    public String getEntry(String index)
-    {
+    public String getEntry(String index) {
         try {
             checkConecction();
 
@@ -44,7 +51,7 @@ public class MySQL implements iDatabase {
 
             ResultSet result = statement.executeQuery();
 
-            if(result.next())
+            if (result.next())
                 return result.getString("dataValue");
 
         } catch (SQLException throwables) {
@@ -54,8 +61,7 @@ public class MySQL implements iDatabase {
         return null;
     }
 
-    public void setEntry(String index, String value)
-    {
+    public void setEntry(String index, String value) {
         try {
             checkConecction();
 
@@ -68,8 +74,7 @@ public class MySQL implements iDatabase {
         }
     }
 
-    public void removeEntry(String index)
-    {
+    public void removeEntry(String index) {
         try {
             checkConecction();
 
