@@ -1,8 +1,8 @@
-name: KeyValueStorage
+name: DataStorage
 main: dev.clatza.storage.DataStorage
 version: 1.0
 
 commands:
   keyvalue:
-    description: Get or set data from key value storage.
-    usage: /keyvalue
+    description: Get or set data over a command for players with op and commandblocks
+    usage: /datastorage
