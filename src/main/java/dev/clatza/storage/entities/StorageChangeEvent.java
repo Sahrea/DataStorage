@@ -30,4 +30,8 @@ public class StorageChangeEvent extends Event {
     public HandlerList getHandlers() {
         return HANDLERS;
     }
+
+    public static HandlerList getHandlerList() {
+        return HANDLERS;
+    }
 }
