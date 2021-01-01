@@ -1,5 +1,5 @@
 name: KeyValueStorage
-main: dev.clatza.KeyValueStorage.KeyValueStorage
+main: dev.clatza.storage.DataStorage
 version: 1.0
 
 commands:
