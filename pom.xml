@@ -10,8 +10,8 @@
 	<distributionManagement>
 		<repository>
 			<id>github</id>
-			<name>GitHub Sahrea Apache Maven Packages</name>
-			<url>https://maven.pkg.github.com/Sahrea/DataStorage</url>
+			<name>GitHub ${env.GITHUB_REPOWNER} Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/${env.GITHUB_REPOWNER}</url>
 		</repository>
 	</distributionManagement>
 	<repositories>
