@@ -85,4 +85,14 @@ public class MySQL implements iDatabase {
             throwables.printStackTrace();
         }
     }
+
+    public void close(){
+        try {
+            if (this.Connection.isClosed() || !this.Connection.isValid(3)) {
+                this.Connection.close();
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 }

@@ -58,4 +58,12 @@ public class SQLite implements iDatabase {
             throwables.printStackTrace();
         }
     }
+
+    public void close(){
+        try {
+            Connection.close();
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+    }
 }

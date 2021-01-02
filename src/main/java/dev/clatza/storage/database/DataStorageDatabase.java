@@ -28,4 +28,8 @@ public class DataStorageDatabase implements iDatabase {
     public void removeEntry(String index) {
         this.Database.removeEntry(index);
     }
+
+    public void close(){
+        this.Database.close();
+    }
 }

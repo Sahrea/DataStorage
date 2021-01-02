@@ -19,6 +19,12 @@ public class DataStorage extends JavaPlugin {
             database = new DataStorageDatabase(configuration.getDBType(), configuration.getDBHost(), configuration.getDBPort(), configuration.getDBUsername(), configuration.getDBPassword(), configuration.getDBDatabase());
     }
 
+    @Override
+    public void onDisable() {
+        if(database != null)
+            database.close();
+    }
+
     public void setEntry(String path, String data) {
         database.setEntry(path, data);
 
