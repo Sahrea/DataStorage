@@ -1,22 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project>
-  <modelVersion>4.0.0</modelVersion>
- 
-  <groupId>dev.clatza.storage</groupId>
-  <artifactId>DataStorage</artifactId>
-  <version>1</version>
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>dev.clatza.storage</groupId>
+	<artifactId>DataStorage</artifactId>
+	<version>1</version>
+	<distributionManagement>
+		<repository>
+			<id>github</id>
+			<name>GitHub Sahrea Apache Maven Packages</name>
+			<url>https://maven.pkg.github.com/Sahrea/DataStorage</url>
+		</repository>
+	</distributionManagement>
+  <dependencies>
+    <dependency>
+      <groupId>com.destroystokyo.paper</groupId>
+      <artifactId>paper-api</artifactId>
+      <version>1.16.4-R0.1-SNAPSHOT</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
 
-  <distributionManagement>
-    <repository>
-      <id>github</id>
-        <name>GitHub Sahrea Apache Maven Packages</name>
-        <url>https://maven.pkg.github.com/Sahrea/DataStorage</url>
-      </repository>
-  </distributionManagement>
-  
-  <dependency>
-    <groupId>com.destroystokyo.paper</groupId>
-    <artifactId>paper-api</artifactId>
-    <version>1.16.4-R0.1-SNAPSHOT</version>
-    <scope>provided</scope>
-  </dependency>
 </project>
