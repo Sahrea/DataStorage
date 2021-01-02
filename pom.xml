@@ -4,6 +4,9 @@
 	<groupId>dev.clatza.storage</groupId>
 	<artifactId>DataStorage</artifactId>
 	<version>${env.RUN_NUMBER}-SNAPSHOT</version>
+	<name>DataStorage</name>
+	<description>MC-Paper plugin to manager sqlite/mysql</description>
+	
 	<distributionManagement>
 		<repository>
 			<id>github</id>
